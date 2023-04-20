@@ -4,8 +4,8 @@ while (true) {
     let nFromUser = prompt("Введите число от 0 до 1000:")
     if (nFromUser === "q") {
         break
-    } else
-    if (nFromUser === "" || isNaN(nFromUser)) {
+    } 
+    if (nFromUser === "" || isNaN(nFromUser) || +nFromUser < 0 || +nFromUser > 1000) {
         alert("Вы ввели не число от 0 до 1000!")
     } else if (+nFromUser < n) {
         alert("Ваше число меньше!")
