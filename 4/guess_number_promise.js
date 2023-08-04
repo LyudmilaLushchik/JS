@@ -20,7 +20,7 @@ async function guessNumber() {
 
     console.log("Угадайте число от 1 до 100!");
 
-    async function askNumber() {
+    while (true) {
         const input = await ask("Введите число: ");
         const number = parseInt(input);
         if (isNaN(number)) {
@@ -28,11 +28,9 @@ async function guessNumber() {
         } else if (number < secretNumber) {
             console.log("Загаданное число больше!");
             attempts++;
-            await askNumber();
         } else if (number > secretNumber) {
             console.log("Загаданное число меньше!");
             attempts++;
-            await askNumber();
         } else {
             attempts++;
             console.log(`Поздравляем, вы угадали число ${secretNumber} за ${attempts} попыток!`);
@@ -42,10 +40,9 @@ async function guessNumber() {
             const protocol = `Загаданное число: ${secretNumber}\nКоличество попыток: ${attempts}\n\n`;
             await fs.appendFile("protocol.txt", protocol);
             console.log("Протокол игры сохранен в файл protocol.txt");
+            break;
         }
     }
-
-    await askNumber();
 }
 
 guessNumber();
